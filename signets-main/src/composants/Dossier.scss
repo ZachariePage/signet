@@ -1,0 +1,129 @@
+.Dossier {
+  position: relative;
+  width: 15vw;
+  height: 17vw;
+
+  @media screen and (width < 401px) {
+    width: 75vw;
+    height: 85vw;
+  }
+
+  min-width: 250px;
+  min-height: 290px;
+  color: #fff;
+  cursor: grab;
+  overflow: hidden;
+  
+  &.zd {
+    box-shadow: 0 0 8px 5px rgba($color: #0f9608, $alpha: 0.4);
+
+    &::after {
+      position: absolute;
+      content: '\2B8B';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba($color: #333, $alpha: 0.4);
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+    }
+  }
+  
+  &.actif .carte {
+    transform: rotateY(180deg);
+  }
+
+  .carte {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    height: 100%;
+    
+    .endroit,
+    .envers {
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      backface-visibility: hidden;
+      transform: rotate(0); // Nécessaire pour contrer 'bogue' Firefox avec backface-visibility
+      // Voir : https://bugzilla.mozilla.org/show_bug.cgi?id=1201471
+    }
+
+    .endroit {
+      position: relative;
+
+      .couverture {
+        height: 55%;
+        img {
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+
+      .info {
+        height: 45%;
+        padding: 0.75rem;
+        h2 {
+          font-size: 1.4rem;
+          margin: 0;
+          font-weight: normal;
+          font-family: Roboto Slab;
+        }
+        p {
+          font-size: 0.9rem;
+          margin: 0.5rem 0 0 0;
+        }
+      }
+    }
+
+    .envers {
+      transform: rotateY(180deg);
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      a {
+        padding: 0.5rem;
+        margin: 0.5rem;
+        border-top: 1px dotted #ccc;
+        border-bottom: 1px dotted #ccc;
+      }
+    }
+  }
+  
+
+  .tourner, 
+  .supprimer,
+  .modifier {
+    position: absolute;
+    cursor: pointer;
+    background-color: rgba($color: #444, $alpha: 0.8);
+    color: #ccc;
+    &:hover {
+      background-color: rgba($color: #333, $alpha: 0.4);
+    }
+  }
+
+  .tourner {
+    top: 0.6rem;
+    left: 0.6rem;
+  }
+
+  .supprimer {
+    top: 0.6rem;
+    right: 0.6rem;
+  }
+
+  .modifier {
+    bottom: 0.6rem;
+    right: 0.6rem;
+  }
+
+}

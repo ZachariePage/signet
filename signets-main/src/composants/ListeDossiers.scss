@@ -1,0 +1,15 @@
+.ListeDossiers {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem; 
+  padding: 0;
+  margin-top: 1rem;
+
+  .aucun-dossier {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+  }
+}

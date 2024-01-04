@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "dossiers",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "dateModif",
+          "order": "DESCENDING"
+        },
+        {
+          "fieldPath": "titre",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

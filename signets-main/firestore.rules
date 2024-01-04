@@ -1,0 +1,21 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // [Début]
+    // Règle spécifique à l'exemple de classe Signets
+    // On commence au niveau de l'utilisateur
+    match /utilisateurs-signets/{idUtilisateur} {
+    	allow create : if request.auth != null
+      allow read, update, delete : if request.auth != null && request.auth.uid == idUtilisateur
+    	
+      // puis, on autorise au niveau des dossiers
+      match /dossiers/{dossier} {
+      	allow read, write : if request.auth != null && request.auth.uid == idUtilisateur
+      }
+    }
+    // [Fin]
+    
+    // Autres règles pour autre appli/collection...
+    
+  }
+}

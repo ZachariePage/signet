@@ -1,0 +1,13 @@
+.PageUtilisateur {
+  height: 100vh;
+  
+  .ajoutDossier {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: #060;
+    &:hover {
+      background-color: #090;
+    }
+  }
+}
